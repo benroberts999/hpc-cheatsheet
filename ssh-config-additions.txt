@@ -1,0 +1,26 @@
+# Example ~/.ssh/config  (on your own laptop/desktop, not on Bunya)
+# Create ~/.ssh/config if it does not exist, and add the below to it
+
+Host bunya
+    HostName bunya.rcc.uq.edu.au
+    User uqusername
+
+    # Multiplexing: log in (password + MFA) once, then ssh, scp, rsync (push.sh/pull.sh)
+    # reuse that connection for an hour without asking again.
+    # Needs the directory to exist first:   mkdir -p ~/.ssh/sockets
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%C
+    ControlPersist 1h
+
+    # Stop idle connections being dropped
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+
+
+# Friday: uses port 2022. With an ssh key set up (ssh-copy-id friday), no password or Okta needed.
+Host friday
+    HostName friday.research.dc.uq.edu.au
+    Port 2022
+    User uqusername
+    ServerAliveInterval 60
+    ServerAliveCountMax 3

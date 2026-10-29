@@ -1,0 +1,17 @@
+## ignore all files in all subdirectories (including /)
+**/*
+
+## except: all subdirectories (just folders)
+!**/
+
+## except: gitignore file
+!.gitignore
+
+## except: any file in any subdirectory that matches:
+!**/*.sh
+!**/*.slurm
+!**/*.in
+!**/*.out
+!**/*.txt
+
+## ... continue to list any file-types you want git to track

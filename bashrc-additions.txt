@@ -1,0 +1,7 @@
+## Add to ~/.bashrc on Bunya
+
+## Default sacct columns (%N = column width)
+export SACCT_FORMAT="JobID%-16,JobName%-16,NCPUS%5,ReqMem%7,MaxRSS%8,Timelimit%12,Elapsed%12,CPUTime%14,TotalCPU%14,State%-11"
+
+## sa -j JOBID, sa -S now-7days: job history, memory in GB
+alias sa='sacct --units=G'
